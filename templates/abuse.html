@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+ {% block title %}
+ <title>Ebola CDC finder | Report Abuse</title>
+ {% endblock title %}
+{% block content %}
+
+	
+	<div class="col-sm-5 abuse">
+		
+	<h3>Report Abuse</h3>
+	<h5>Please include the following:</h5>
+		<ul>
+			<li>Your name and a valid email address</li>
+			<li>Whether this content is spam, contains foul language, or something else.</li>
+		</ul>
+
+	</div>
+	<div class="col-sm-7 abuse">
+	{% if messages %}
+	        <div class="row">
+	            {% for message in messages %}
+	            <div class="col-xs-12"><p {% if message.tags %} class="{{ message.tags }}"{% endif %}> {{ message }}</p></div>
+	            {% endfor %}
+	        </div>
+	      {% endif %}
+
+	<form action="/report/{{center_id}}/" method="POST">
+	  {% csrf_token %}
+	  <p>{{ form.description}}</p>
+	  <input type="submit" value="Report" />
+	</form>
+	</div>
+
+{% endblock content %}

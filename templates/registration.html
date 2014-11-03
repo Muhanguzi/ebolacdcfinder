@@ -1,0 +1,102 @@
+{% extends 'base.html'%}
+{% block title %}
+
+<title>Ebola CDC finder | Register Ebola CDC Center </title>
+{% endblock title%}
+{% block content %}
+  <div class="col-sm-9 registration-map-div">
+
+    <br>
+        <p><em>*All fields are required</em></p>                
+        <form action="#" method="post">{% csrf_token %}
+            <div class="fieldWrapper">
+                <p>Click on the location of the CDC on the map to get coordinates.</p>
+                <div id="registration_map" style="height:450px; width:100%; padding-top:100px;"></div>
+
+                <input id="coordinates" name="coordinates" value="" type="hidden" />
+            </div>
+    
+  </div>
+  <div class="col-sm-3 registration-fields">
+      {% if messages %}
+        <div class="row">
+            {% for message in messages %}
+            <div class="col-xs-12"><p {% if message.tags %} class="{{ message.tags }}"{% endif %}> {{ message }}</p></div>
+            {% endfor %}
+        </div>
+      {% endif %}
+
+      <div class="fieldWrapper">
+            <label>Country</label><br/>
+            {{ form.country}}
+           
+        </div>    
+        <div class="fieldWrapper">
+            <label>City</label><br/>
+             {{ form.city}}
+           
+        </div>     
+        <div class="fieldWrapper">                
+            <label>Road Address</label><br/>
+             {{ form.roadAddress}}
+          
+        </div> 
+        <div class="fieldWrapper">                
+            <label>CDC Center Name</label><br/>
+             {{ form.centerName }}
+          
+        </div> 
+        <div class="fieldWrapper">                
+            <label>Telephone</label><br/>
+             {{ form.telephone }}
+          
+        </div>   
+
+        <br>
+        <input type="submit" name="submit" class="btn" value="Add Ebola CDC">
+    </form>
+    <br></br>
+
+    <script>
+
+    	
+        var map = L.map('registration_map');
+        map.locate({setView: true,maxZoom:18});
+        
+              
+        L.tileLayer('//{s}.tile.osm.org/{z}/{x}/{y}.png', {
+          attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a>',
+          maxZoom: 18,
+          minZoom:11,
+        }).addTo(map);
+
+        function onMapClick(e) {
+
+
+    	document.getElementById('registration_map').style.cursor = "pointer"
+          var lat = e.latlng.lat;
+          var lng = e.latlng.lng;
+         
+
+          // Every time when user click on map we want to delete previous marker and create new marker on the new position where the user clicked      
+          if (typeof marker != 'undefined') {
+              map.removeLayer(marker);  // delete previous marker
+              marker = L.marker([lat, lng]).addTo(map);  // add new marker
+          }
+          else {
+              marker = L.marker([lat, lng]).addTo(map);  // add new marker
+          }
+          
+          // we want to pass value of longitued and latitude to input field with id 'coordinates'
+          // note that we set that field as hidden because we don't want user to type the coordinates there. We want him to set marker on map 
+          $('#coordinates').val(lng + ',' + lat)          
+        }
+
+        // call the onMapClick function when user click on map
+      
+        map.on('click', onMapClick);
+       
+    </script>
+    
+  </div>
+{% endblock content %}

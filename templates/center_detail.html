@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+ {% block title %}
+ <title>Ebola CDC finder |{{ center_response.country}}, {{center_response.city }} - {{ center_response.centerName}}</title>
+ {% endblock title %}
+{% block content %}	
+	<div class="col-sm-8 map_det">
+		<script type="text/javascript"> 
+				 $(document).ready(function() {
+
+				 	var latlng = new google.maps.LatLng("{{ center_response.location.y}}", "{{ center_response.location.x }}");
+			        var mapOptions = {
+			            zoom: 15,
+			            center: latlng,
+			            mapTypeId: google.maps.MapTypeId.ROADMAP
+			        };
+
+			        map = new google.maps.Map($('#cell_map')[0], mapOptions);
+			    
+			        var marker = new google.maps.Marker({
+			            position: latlng,
+			            map: map
+			       
+			        });
+
+
+
+
+				 });
+
+			</script>
+		
+		<div id="cell_map">
+		   
+		</div>
+
+	</div>
+	<div class="col-sm-4 center_det">
+		
+	<span class="detail_body"><h3 class="center-name-heading">Ebola CDC: {{center_response.centerName}}</h3></span>
+	<span class="detail_headers"><p> Location</span> <span class="detail_body">: {{center_response.country}}, {{center_response.city}}<p></span>
+	<span class="detail_headers"><p>Address</span> <span class="detail_body">: {{center_response.roadAddress}}</p></span>
+	<span class="detail_body_telephone"><span class="glyphicon glyphicon-phone">:{{center_response.telephone}}</span></span><br/><br/>
+	<span class='st_facebook'></span>
+	<span class='st_twitter'></span>
+	<h3 class="det-border"></h3>
+			
+
+
+	</div>
+	
+{% endblock content %}

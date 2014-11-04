@@ -161,7 +161,7 @@ ul{
 }
 #business_search_map{
 
-		width:300px;
+		width:350px;
     	height:330px;
     	border: solid 1px #ccc;
     	float: left;
@@ -324,7 +324,7 @@ ul{
 }
 #cell_map{
 
-	width: 320px;
+	width: 350px;
 	height: 400px;
 	border: 1px solid #ccc;
 	background: transparent url('https://findcdcassets.s3.amazonaws.com/static/media/loading.gif') no-repeat center center;

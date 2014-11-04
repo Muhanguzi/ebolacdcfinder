@@ -26,7 +26,7 @@ class ServicesForm(forms.Form):
 class AbuseForm(forms.Form):
 
     
-    description = forms.CharField(widget = forms.Textarea(attrs={'rows': 10, 'cols': 60}))
+    description = forms.CharField(widget = forms.Textarea(attrs={'rows': 10, 'cols': 50}))
 
     def clean(self):
 

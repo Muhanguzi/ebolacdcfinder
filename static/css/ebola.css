@@ -24,15 +24,24 @@ body{
 
 	color: #333;
 	font-size: 16px;
+	font-weight: 700;
 }
 .back-image{
-
-
-	height: 480px;
+	
+	background: transparent url('https://findcdcassets.s3.amazonaws.com/static/media/background-small.jpg') no-repeat center center;
+	position: relative;
+	margin: 20px;
+	height: 300px;
+	padding: 20px;
 	display: block;
-	
-	
+  
 }
+.back-image p{
+
+	font-size:16px;
+
+}
+
 .glyphicon-search{
 
 	color: green;
@@ -64,12 +73,20 @@ ul{
 .abuse{
 
 	padding-top: 20px;
+	margin-bottom: 20px;
 }
 #em_cont{
 
 	font-weight: 700px;
-	color: #333;
-	font-size: 18px;
+	color: #666;
+	font-size: 16px;
+}
+.contact-div{
+
+	margin: 0 auto;
+	padding-top:7%;
+	width: 380px;
+
 }
 .tips_wrapper{
 
@@ -84,8 +101,8 @@ ul{
 
 	margin: 0 auto;
 	list-style-type: none;
-	padding-top: 20px;
-	padding-bottom: 20px;
+	padding-top: 15px;
+	padding-bottom: 15px;
 	border-bottom: 1px solid #CCC;
 
 }
@@ -148,6 +165,7 @@ ul{
 
 	font-size: 24px;
 	font-weight: bold;
+	color: #7DBE32;
 }
 .det-border{
 
@@ -381,8 +399,13 @@ ul{
 	}
 	.donate a{
 
-	color: #333;
-	font-size: 20px;
+	color: #666;
+	font-size: 16px;
+	}
+	.back-image{
+
+		height: 580px;
+		background: transparent url('https://findcdcassets.s3.amazonaws.com/static/media/background.jpg') no-repeat center center;
 	}
 	
 }

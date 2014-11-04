@@ -4,7 +4,8 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=0">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
+    
     {% block title %}
     {% endblock title %}
     <meta name="description" content="This tool enables people to register or find Ebola Centers for Disease Control and Prevention in their countries.">
@@ -38,7 +39,7 @@
   <body>
   	<div class="container wrapper">
   		<div class="row banner-word">
-      <a href="{% url 'home' %}"><img src="{{ STATIC_URL }}media/logo.png"></a><span class="logo">Ebola CDC finder</span>
+      <a href="{% url 'home' %}"><img src="https://findcdcassets.s3.amazonaws.com/static/media/logo.png"></a><span class="logo">Ebola CDC finder</span>
       </div>
   		<div class="row">
   			
@@ -69,8 +70,8 @@
               <div class="service-item"><a href="{% url 'about' %}">ABOUT US</a></div>
               <div class="service-item"><a href="{% url 'contact' %}">CONTACT US</a></div>
 						  <div><span id="em_cont">SHARE THIS</span><br/><br/>
-              <span class='facebook'><img src="{{ STATIC_URL }}media/facebook.png" /></span>&nbsp;&nbsp;
-              <span class='twitter'><img src="{{ STATIC_URL }}media/twitter.png" /></span>
+              <span class='facebook'><img src="https://findcdcassets.s3.amazonaws.com/static/media/facebook.png" /></span>&nbsp;&nbsp;
+              <span class='twitter'><img src="https://findcdcassets.s3.amazonaws.com/static/media/twitter.png" /></span>
         
 
               </div>

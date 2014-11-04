@@ -89,7 +89,7 @@ $(document).ready(function(){
               dataType: "json",
               beforeSend: function() {
                     $('#map-major').empty();
-                    $('#map-major').html("<img class='loader'src='/media/loading.gif' />");
+                    $('#map-major').html("<img class='loader'src='https://findcdcassets.s3.amazonaws.com/static/media/loading.gif' />");
                 },
               success: function (data){
 

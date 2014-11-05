@@ -25,6 +25,12 @@ SECRET_KEY = '-x(kqlnijf!6l&7)j8_(42^vp30m1+g*tu!$qp0v_l%(jzewue'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
+ADMINS = (
+    ('Daniel Muhanguzi', 'danielmuhanguzi@gmail.com'),
+)
+
+MANAGERS = ADMINS
+
 TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []

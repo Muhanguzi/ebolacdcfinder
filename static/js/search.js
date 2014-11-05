@@ -61,9 +61,18 @@ $(document).ready(function(){
          }    
 
     function initiate_geolocation() {
+
+
             
-         navigator.geolocation.getCurrentPosition(handle_geolocation_query);
+         navigator.geolocation.getCurrentPosition(handle_geolocation_query,errorCoor, {maximumAge:60000, timeout:10000, enableHighAccuracy:true});
     
+    }
+
+    function errorCoor(error){
+
+        alert("Location not found. Try again.")
+
+
     }
  
     function handle_geolocation_query(position){
@@ -72,7 +81,7 @@ $(document).ready(function(){
 
             if (!$('input:radio[name=distance]:checked').val()){
 
-                distance = 7;
+                distance = 100;
         
 
             }else{
@@ -226,7 +235,7 @@ $(document).ready(function(){
               newcontent +=  "<span>"+datax[i].roadAddress+"</span><br/>";
               newcontent +=  "<span class='country'>"+datax[i].country+" ,"+"</span><span class='country'>"+datax[i].city+" </span><br/>";
               newcontent +=  "<span class='glyphicon glyphicon-phone' id='search_tel'>"+datax[i].telephone+"</span><br/>"
-              newcontent +=  "<span class='flag'><a href='/report/"+datax[i].center_id+"'>-Flag-</a></span>"
+              newcontent +=  "<span class='flag'><a href='/report/"+datax[i].center_id+"'>Flag</a></span>"
               newcontent +=  "</div></div></div>";
 
               inforBoxContent[i] = "<div class='infobox'><span class='infoboxContent'><a href='/d/"+datax[i].centerName+"'>"+datax[i].centerName+"</a></span><br/><span>"+datax[i].telephone+"</span></div>";  

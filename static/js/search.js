@@ -81,7 +81,7 @@ $(document).ready(function(){
 
             if (!$('input:radio[name=distance]:checked').val()){
 
-                distance = 100;
+                distance = 200;
         
 
             }else{

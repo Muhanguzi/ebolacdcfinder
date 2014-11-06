@@ -127,7 +127,8 @@ ul{
 
 	height: 100px;
 	border-bottom: 1px solid #CCC;
-	padding: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 
 	
 }

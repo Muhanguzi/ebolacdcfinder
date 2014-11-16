@@ -1,0 +1,22 @@
+{% extends "base_v2.html" %}
+
+
+{% block content %}
+<div class="container mycontainer">
+	<div class="row">
+		<div class="col-lg-10 col-lg-offset-1" style="text-align:center;">
+		  	<div class="panel panel-primary panel-contact">
+				<div class="panel-body">
+					<div class="col-lg-12">				  		
+						<h4>Congratulations! You've successfully confirmed your account. You can <a href="{% url 'user_account.views.login' %}">login</a> now.</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<br></br>
+<br></br>
+{% endblock %}
+

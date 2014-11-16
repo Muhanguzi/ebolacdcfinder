@@ -1,0 +1,48 @@
+{% extends "base_v2.html" %}
+
+{%block nav-block-login%}
+class="active"
+{%endblock%}>
+
+{% block content %}
+
+<div class="container mycontainer">
+	<div class="row">
+		<div class="col-lg-10 col-lg-offset-1" style="text-align:center;">
+		  	<div class="panel panel-primary panel-contact">
+				<div class="panel-body">
+					<div class="col-lg-12">				  		
+					  <h3>Login</h3>
+			  		  <p>Please login with your username.</p>
+			  		  <p><em>If you don't have an account you can create it <a href="{% url 'user_account.views.register_user' %}">here</a>.</em></p>
+			  		  <br>	  		
+					
+				  	  <div class="col-lg-4 col-lg-offset-4">	  
+						  <form class="form-login" action="{% url 'user_account.views.auth_view' %}" method="post">{% csrf_token %}
+						   
+						    <div class="input-group input-group-sm">
+							  <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+							  <input type="text" class="form-control" name="username" value="" id="username" placeholder="Username">
+							</div>
+							<br>
+						    {{form.password.errors}}
+						    <div class="input-group input-group-sm">
+							  <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+							  <input type="password" class="form-control" name="password" value="" id="password" placeholder="Password">
+							</div>
+						    <br>
+
+						    <button class="btn btn-success btn-md" type="submit" value="login" >Login</button>
+						  </form>	
+						</div>	
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+  
+  
+
+{% endblock %}
+

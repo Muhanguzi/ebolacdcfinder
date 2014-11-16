@@ -1,0 +1,47 @@
+{% extends "user_profile/profile.html" %}
+
+
+{% block profile_content %}
+
+<div class="col-lg-9 col-xs-12 col-sm-6">
+    <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4>Profile Settings</h4>
+    </div>
+	  <div class="panel-body">
+      <h4>Security</h4>
+	    <p><a href="{% url 'django.contrib.auth.views.password_change' %}"><i class="fa fa-key"></i> Change password</a></p>
+	    <p><a href="#" data-toggle="modal" data-target="#confirmDelete" class="confirm-dialog"><i class="fa fa-trash-o"></i> Delete your profile</a></p>
+      <br>
+	  </div>
+	</div>
+</div>
+
+ 
+<!-- Modal confirm delete -->
+<div class="modal fade" id="confirmDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Delete profile</h4>
+      </div>
+      <form class="form-updateProfile" action="{% url 'user_profile.views.delete_user' this_user.username %}" method="post">{% csrf_token %}
+      <div class="modal-body">
+          <h4>Are you really sure that you want to delete your account?</h4>
+          <p><em>If you have changed your mind click 'Cancel'. If you still want to do it then please first type your password.</em></p><br>
+          <input type="password" class="form-control" name="password" value="" id="id_password" placeholder="Your Password" style="width: 150px;">         	
+        </p>			        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <input type="submit" name="submit" class="btn btn-primary" value="Delete account">
+      </div>
+      </form>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+{% endblock %}
+
+

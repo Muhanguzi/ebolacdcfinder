@@ -1,19 +1,25 @@
-{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
+    {% load staticfiles %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ebola Finder</title>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
     <link rel="shortcut icon" href="https://findcdcassets.s3.amazonaws.com/static/media/favicon.ico" type="image/x-icon">
     <link rel="icon" href="https://findcdcassets.s3.amazonaws.com/static/media/favicon.ico" type="image/x-icon">
     
-    <!-- Font awesome -->
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    
     {% block title %}
     {% endblock title %}
     <meta name="description" content="This tool enables people to register or find Ebola Centers for Disease Control and Prevention in their countries.">
+
+    <!-- Font awesome -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- Bootstrap -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -30,20 +36,15 @@
     <script type="text/javascript">var switchTo5x=true;</script>
     <script type="text/javascript" src="//w.sharethis.com/button/buttons.js"></script>
     <script type="text/javascript">stLight.options({publisher: "c57e6889-2b18-437d-a5c4-138d2fdd12e3", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
-    
-     <!--[if lte IE 8]>
-         <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.ie.css" />
-     <![endif]-->
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-  	<div class="container wrapper">
-      <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+
+    {% block extra_head %}
+    {% endblock %}
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
           <div class="container">
               {% block navbar_items %}
               <div class="navbar-header">
@@ -84,56 +85,13 @@
           <!-- /.container -->
       </nav>
 
-  		
-  		<div class="row" style="margin-top:140px;">
+    {% block content %}
+    {% endblock %}
 
-  			<div class="row all-content-wrapper">
-  				<div class="col-sm-9 map-wrapper" id="map-major">
-  					{% block content %}
-            {% endblock content %}
+    <!-- JavaScript -->
+    {% block extra_body %}
+    {% endblock %}
 
-  				</div>
+</body>
 
-  				<div class="col-sm-3 side-bar">
-  					<div class="row side-div-one">
-  					
-              <div>
-                <label><input type="radio" name="distance" value="5" /> < 5km </label>
-                <label><input type="radio" name="distance" value="25"/> < 25km </label>
-                <label><input type="radio" name="distance" value="50"/> < 50km </label>
-                <label><input type="radio" name="distance" value="100"/> < 100km </label>
-              </div>
-
-              <button id="search-nearest-care">SEARCH EBOLA CDC</button>
-
-  					</div>
-  					<div class="row side-div-two">
-              <div class="service-item"><a href="{% url 'home'%}">HOME</a></div>
-						  <div class="service-item"><a href="{% url 'cdc_registration'%}"> REGISTER NEAREST EBOLA CDC</a></div>
-              <div class="service-item"><a href="/tips/"> EBOLA PREVENTION TIPS </a></div>
-						  <div class="service-item"><a href="/start/">HOW IT WORKS</a></div>
-              <div class="service-item"><a href="{% url 'about' %}">ABOUT US</a></div>
-              <div class="service-item"><a href="{% url 'contact' %}">CONTACT US</a></div>
-						  <div><span id="em_cont">SHARE THIS</span><br/><br/>
-              <span class='facebook'><a href="https://www.facebook.com/ebolacdcfinder/" target="_blank"><img src="https://findcdcassets.s3.amazonaws.com/static/media/facebook.png" /></a></span>&nbsp;&nbsp;
-              <span class='twitter'><a href="https://twitter.com/EbolaCdc/" target="_blank"><img src="https://findcdcassets.s3.amazonaws.com/static/media/twitter.png" /></a></span>
-        
-
-              </div>
-              <div class="donate"><a href="{% url 'contact' %}">DONATE TO KEEP THIS SITE RUNNING</a></div>
-
-  					</div>
-
-  				</div>
- 			</div>
-
-  		</div>
-  		<div class="row footer">
-          <h5>Copyright &copy 2014 <a href="http://agriit.wordpress.com/" target="_blank">AGRIIT INSTITUTE </a> All rights reserved. Powered by bluetendril</a></h5>  
-      </div>
-  	</div>
-    <script src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js" type="text/javascript"></script> 
-    <script src="http://d-scribe.de/webtools/jquery-pagination/lib/jquery_pagination/jquery.pagination.js"></script>
-  </body>
 </html>
-

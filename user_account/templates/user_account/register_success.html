@@ -1,0 +1,18 @@
+{% extends "base_v2.html" %}
+
+
+{% block content %}
+<div class="container mycontainer">
+	<div class="row">
+		<div class="col-lg-8 col-lg-offset-2">		
+			<div class="alert alert-success">
+			<p><strong>Congratulations! </strong>Your account has been successfully created!</p>
+			<br>
+			<p>Before you login with your new account please first submit your email address by opening activation link that we've sent to your e-mail address.</p>
+			<p><a href="{% url 'home' %}"><i class="fa fa-home"></i> Home page</a></p>
+
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

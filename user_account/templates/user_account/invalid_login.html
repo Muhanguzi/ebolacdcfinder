@@ -1,0 +1,49 @@
+{% extends "base_v2.html" %}
+
+{%block nav-block-login%}
+class="active"
+{%endblock%}>
+
+{% block content %}
+
+<div class="container mycontainer">
+	<div class="row">
+		<div class="col-lg-10 col-lg-offset-1" style="text-align:center;">
+		  	<div class="panel panel-primary panel-contact">
+				<div class="panel-body">
+					<div class="col-lg-12">					  		
+					  <div class="alert alert-danger">
+						<p><strong>Invalid login! </strong>You've entered wrong username or password!</p>			
+					  </div>
+				  	  <p>Try again</p>
+				  	  <div class="col-lg-4 col-lg-offset-4">
+						  <form class="form-login" action="{% url 'user_account.views.auth_view' %}" method="post">{% csrf_token %}
+						   
+						    <div class="input-group input-group-sm">
+							  <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+							  <input type="text" class="form-control" name="username" value="" id="username" placeholder="Username">
+							</div>
+							<br>
+						    {{form.password.errors}}
+						    <div class="input-group input-group-sm">
+							  <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+							  <input type="password" class="form-control" name="password" value="" id="password" placeholder="Password">
+							</div>
+						    <br>
+						    <button class="btn btn-primary btn-sm" type="submit" value="login" >Login</button>
+						  </form>
+						  <br>
+					  		<p><a href="{% url 'user_account.views.forgot_password' %}">Forgot your password?</a></p>	
+						</div>
+					  
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+  
+  
+
+{% endblock %}
+

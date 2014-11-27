@@ -1,0 +1,52 @@
+{% extends "base_v2.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+<div class="container mycontainer">
+
+    <div class="row">
+        <div class="col-lg-3">
+		    <div class="panel panel-default">
+			  <div class="panel-heading">
+			  <h4 class="panel-title"><strong><a href="{% url 'user-profile' this_user.username %}" style="text-decoration: none; color:inherit;"><i class="fa fa-user"></i> {{this_user.username}}</a></strong></h4>
+			  </div>
+			  <div class="panel-body">		
+			  	<a href="{% url 'user-profile' this_user.username %}">
+				<div class="thumbnail">
+			      {% if this_profile.profile_picture %}<img src="{{this_profile.profile_picture.url}}" alt="profile picture" title="{{this_user.username}}" class="img-responsive" style="max-height: 300px; min-width:100%;">
+			      {% else %}
+			      <img src="{% static 'website/images/empty-avatar.jpg' %}" class="img-responsive">
+			      {%endif%}
+			    </div>		
+			    </a>		    
+			    {% if user = this_user %}
+			    <hr>
+			    <p><a href="{% url 'update-profile' this_user.username %}"><i class="fa fa-pencil"></i> Edit profile</a></p>
+			    <p><a href="{% url 'profile-settings' this_user.username %}"><i class="fa fa-cog"></i> Profile settings</a></p>
+			    {% endif %}
+			  </div>
+			</div>
+        </div>
+
+        {% block profile_content %}
+        <div class="col-lg-9">
+        	<div class="panel panel-default">
+			  <div class="panel-heading"><i class="fa fa-desktop"></i> <span style="padding-left:10px;">My Contributions to Ebola Project</span></div>
+			  <div class="panel-body">
+			  	<h4>Ebola centers I've added</h4>
+			  	<p>....</p>
+			  	<h4>Ebola File documents</h4>
+			  	<p>....</p>
+			  </div>
+			</div>
+        </div>
+        {% endblock %}
+    </div>
+
+</div>
+<br><br><br>
+<!-- /.container -->
+{% endblock %}
+
+

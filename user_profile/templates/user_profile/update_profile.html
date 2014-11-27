@@ -1,0 +1,58 @@
+{% extends "user_profile/profile.html" %}
+ 
+
+{% block profile_content %}
+
+<div class="col-lg-9 col-xs-12 col-sm-6">
+    <div class="panel panel-default">
+	  <div class="panel-body">
+	    <form class="form-updateProfile" action="{% url 'user_profile.views.update_profile' this_user.username %}" method="post" enctype="multipart/form-data">{% csrf_token %}
+			<h4>Edit your profile</h4>
+			<hr>
+			<div class="row">
+				<div class="col-lg-4">
+					{{form.errors}}
+					<br>
+					<div class="input-group">
+						<span class="input-group-btn">
+							<span class="btn btn-default btn-file">
+								<input type="file" name="profile_picture" id="id_profile_picture">
+							</span>
+						</span>
+						<input type="text" class="form-control" readonly style="visibility:hidden;">
+					</div>
+					<input id="profile_picture-clear_id" name="profile_picture-clear" type="checkbox" /> Delete your current profile picture
+					
+					<input type="submit" name="submit" class="btn btn-success btn-md" value="Save">
+				</div>
+			</div>
+		</form>
+	  </div>
+	</div>
+</div>
+
+<script type="text/javascript">
+$(document)
+	.on('change', '.btn-file :file', function() {
+		var input = $(this),
+		numFiles = input.get(0).files ? input.get(0).files.length : 1,
+		label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+		input.trigger('fileselect', [numFiles, label]);
+});
+
+$(document).ready( function() {
+	$('.btn-file :file').on('fileselect', function(event, numFiles, label) {
+		
+		var input = $(this).parents('.input-group').find(':text'),
+			log = numFiles > 1 ? numFiles + ' files selected' : label;
+		
+		if( input.length ) {
+			input.val(log);
+		} else {
+			if( log ) alert(log);
+		}
+		
+	});
+});		
+</script>
+{% endblock%}
